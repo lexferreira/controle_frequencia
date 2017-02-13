@@ -1,0 +1,131 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastrar Responsável</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/realtime_database_responsavel.js"></script>		
+		<script src="js/validate.js"></script>
+		<script src="js/validar_responsavel.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+
+	<body>
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="index.html">Escola X</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="visualizar.html">Visualizar Frequência</a></li>
+						<li><a href="calendario.html">Calendário Escolar</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+					<header class="major">
+						<h2>Cadastrar Reponsável</h2>
+						<p>Digite os dados do responsável pelo aluno</p>
+					</header>
+					<div id="mini_menu" align="center">
+					<section class="4u$ 12u$(medium) 12u$(small)">
+					<form id="responsavel_form" name="responsavel_form" method="POST" onSubmit="return enviar_dados_responsavel();">
+						<ul class="actions">
+							<li>
+								<fieldset id="dados"><legend>Dados do responsável:</legend>
+									<p>Nome:<input type="text" name="t_nome_responsavel" id="c_nome_responsavel" maxlength="40" required placeholder="Digite o Nome do responsavel pelo aluno" /></p>
+									<p>RG:<input type="text" name="t_rg_responsavel" id="c_rg_responsavel" maxlength="10" required placeholder="Digite o RG" /></p>
+									<p>CPF:<input type="text" name="t_cpf_responsavel" id="c_cpf_responsavel" maxlength="11" required placeholder="Digite o CPF" /></p>
+									<fieldset id="contato"><legend>Dados para contato</legend>
+									<p>Telefone1:<input type="text" name="t_telefone_responsavel" id="c_telefone_responsavel" required placeholder="Digite o telefone 1" /></p>
+									<p>E-mail:<input type="text" name="t_mail" id="c_mail_responsavel" maxlength="25" required placeholder="Digite o e-mail" /></p>
+									<p>Parentesco:<select name="t_parentesco" id="c_parentesco_responsavel" required placeholder="Selecione a Parentesco">
+										<option value="Pai">Pai</option>
+										<option value="Mãe">Mãe</option>
+										<option value="Responsável">Responsável</option>
+										</select></p>
+									</fieldset>
+									<button class="button alt big" type="reset" id="btn_limpar_responsavel" value="Limpar">Limpar</button>
+									<button class="button alt big" type="submit" id="btn_cadastrar_responsavel" onsubmit="create()">Cadastrar</button>
+
+								</fieldset>
+							</li>
+						</ul>
+						</form>
+						<br></br>
+						<a href="tela_user.html">Voltar para o menu</a>
+						</section>	
+					</div>	
+				</div>
+				<div>
+					<ul id="lista_Usuarios">
+					</ul>
+				</div>
+
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="4u 6u(medium) 12u$(small)">
+							<h3>Sites úteis</h3>
+							<p>Acesse o Boletim, Site da Diretoria de Ensino e Secretaria da Educação.</p>
+							<ul class="alt">
+								<li><a href="http://sed.educacao.sp.gov.br/">Boletim Escolar</a></li>
+								<li><a href="http://debragancapaulista.educacao.sp.gov.br/">Diretoria de Ensino Região de Bragança Paulista</a></li>
+								<li><a href="http://www.educacao.sp.gov.br/">Secretaria de Educação do Estado de São Paulo</a></li>
+								<li><a href="http://www.prefeituradeatibaia.com.br/">Prefeitura de Atibaia</a></li>
+							</ul>
+						</section>
+						<section class="4u 6u$(medium) 12u$(small)">
+							<h3>     </h3>
+						</section>
+						<section class="4u$ 12u$(medium) 12u$(small)">
+							<h3>Entre em contato:</h3>
+							<ul class="icons">
+								<li><a href="#" class="icon rounded fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon rounded fa-facebook"><span class="label">Facebook</span></a></li>
+							</ul>
+							<ul class="tabular">
+								<li>
+									<h3>Endereço</h3>
+									Rua Rui Barbosa, 15<br>
+									Atibaia, SP 12940-000
+								</li>
+								<li>
+									<h3>E-Mail</h3>
+									<a href="#">contato@escolax.com</a>
+								</li>
+								<li>
+									<h3>Telefone</h3>
+									(11)4444-5555
+								</li>
+							</ul>
+						</section>
+					</div>
+					<ul class="copyright">
+						<li>&copy; losmacacosCorp. All rights reserved.</li>
+					</ul>
+				</div>
+			</footer>
+	</body>
+</html>

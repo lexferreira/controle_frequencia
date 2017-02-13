@@ -1,0 +1,138 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastrar Aluno</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/realtime_database_aluno.js"></script>	
+		<script src="js/validate.js"></script>
+		<script src="js/validar_aluno.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+
+	<body onload="listar_turmas()">
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="index.html">Escola X</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="visualizar.html">Visualizar Frequência</a></li>
+						<li><a href="calendario.html">Calendário Escolar</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+					<header class="major">
+						<h2>Cadastrar Aluno</h2>
+						<p>Digite os dados do aluno</p>
+					</header>
+					<div id="mini_menu" align="center">
+					<section class="4u$ 12u$(medium) 12u$(small)">
+					<form id="aluno_form" name="aluno_form" method="POST" onSubmit="return enviar_dados_aluno();">
+						<ul class="actions">
+							<li>
+								<fieldset id="dados"><legend>Dados do aluno:</legend>
+									<p>ID<input type="text" name="t_rfid_aluno" id="c_rfid_aluno" maxlength="10" required placeholder="Aproxime o cartão do leitor" /></p>
+									<p>Nome:<input type="text" name="t_nome_aluno_aluno" id="c_nome_aluno" maxlength="40" required placeholder="Digite o Nome do Aluno" /></p>
+									<p>RA:<input type="text" name="t_ra_aluno" id="c_ra_aluno" maxlength="12" placeholder="Digite o RA" /></p>
+									<p>Nome da Mãe:<input type="text" name="t_nome_mae_aluno" id="c_nome_mae_aluno" maxlength="40" required placeholder="Digite o Nome da Mãe" /></p>
+									<p>Nome do Pai:<input type="text" name="t_nome_pai_aluno" id="c_nome_pai_aluno" maxlength="40" required placeholder="Digite o Nome do Pai" /></p>
+									<p>Data de Nascimento:<input type="date" name="t_datanasc_aluno" id="c_datanasc_aluno" required placeholder="Digite o Nome do Aluno" /></p>
+									<fieldset id="contato"><legend>Dados para contato</legend>
+									<p>Endereço:<input type="text" name="t_endereco_aluno" id="c_endereco_aluno" maxlength="40" required placeholder="Digite o Endereço" /></p>
+									<p>Telefone1:<input type="text" name="t_telefone1_aluno" id="c_telefone1_aluno" required placeholder="Digite o telefone 1" /></p>
+									<p>Telefone2:<input type="text" name="t_telefone2_aluno" id="c_telefone2_aluno" placeholder="Digite o telefone 2" /></p>
+									<p>Número do Armário:<input type="text" name="t_armario_aluno" id="c_armario_aluno" maxlength="4" required placeholder="Digite o armário" /></p>
+									<p>E-mail:<input type="text" name="t_mail_aluno" id="c_mail_aluno" maxlength="25" required placeholder="Digite o e-mail" /></p>
+									<p>Turma:<select name="t_serie_aluno" id="c_serie_aluno" placeholder="Selecione a série">
+										<option id="listar_turmas">
+											
+										</option>
+										</select></p>
+									</fieldset>
+									</form>
+									<button class="button alt big" type="reset" id="btn_limpar_aluno" value="Limpar">Limpar</button>
+									<button class="button alt big" type="submit" id="btn_cadastrar_aluno" onsubmit="create()">Cadastrar</button>
+
+								</fieldset>
+							</li>
+						</ul>
+
+						<br></br>
+						<a href="tela_user.html">Voltar para o menu</a>
+						</section>	
+					</div>	
+				</div>
+				<div>
+					<ul id="lista_Usuarios">
+					</ul>
+				</div>
+
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="4u 6u(medium) 12u$(small)">
+							<h3>Sites úteis</h3>
+							<p>Acesse o Boletim, Site da Diretoria de Ensino e Secretaria da Educação.</p>
+							<ul class="alt">
+								<li><a href="http://sed.educacao.sp.gov.br/">Boletim Escolar</a></li>
+								<li><a href="http://debragancapaulista.educacao.sp.gov.br/">Diretoria de Ensino Região de Bragança Paulista</a></li>
+								<li><a href="http://www.educacao.sp.gov.br/">Secretaria de Educação do Estado de São Paulo</a></li>
+								<li><a href="http://www.prefeituradeatibaia.com.br/">Prefeitura de Atibaia</a></li>
+							</ul>
+						</section>
+						<section class="4u 6u$(medium) 12u$(small)">
+							<h3>     </h3>
+						</section>
+						<section class="4u$ 12u$(medium) 12u$(small)">
+							<h3>Entre em contato:</h3>
+							<ul class="icons">
+								<li><a href="#" class="icon rounded fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon rounded fa-facebook"><span class="label">Facebook</span></a></li>
+							</ul>
+							<ul class="tabular">
+								<li>
+									<h3>Endereço</h3>
+									Rua Rui Barbosa, 15<br>
+									Atibaia, SP 12940-000
+								</li>
+								<li>
+									<h3>E-Mail</h3>
+									<a href="#">contato@escolax.com</a>
+								</li>
+								<li>
+									<h3>Telefone</h3>
+									(11)4444-5555
+								</li>
+							</ul>
+						</section>
+					</div>
+					<ul class="copyright">
+						<li>&copy; losmacacosCorp. All rights reserved.</li>
+					</ul>
+				</div>
+			</footer>
+	</body>
+</html>

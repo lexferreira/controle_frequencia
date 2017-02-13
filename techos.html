@@ -1,0 +1,223 @@
+	<!--
+			function func_validar(txt_codrfid)
+			if(txt_codrfid=="0003296222"){
+				location.href = "visualizar.html";
+			}else{
+				alert("Código inválido!");
+			}
+		-->
+		const form  = document.querySelector("#usuario_form")
+		form.addEventListener('submit' => enviar_dados_usuario())
+
+
+		//É possivel definir de duas maneiras
+			//Essa que é pela raiz
+			// var fire = newFirebase("https://controle-frequencia.firebaseio.com/");
+			// Essa pela child que você quer inserir dados (Existindo ou não, ela vai ser criada quando inserir algum dado)
+			var fire = new Firebase("https://controle-frequencia.firebaseio.com/local/");
+
+			function enviarDados(){
+				var firebase = require("firebase/app");
+				require("firebase/auth");
+				require("firebase/database");
+
+				var id = usuario_form.c_id.value;
+				var nome = usuario_form.c_nome.value;
+				var rg = usuario_form.c_rg.value;
+				var cpf = usuario_form.c_cpf.value;
+				var endereco = usuario_form.c_endereco.value;
+				var telefone = usuario_form.c_telefone.value;
+				var email = usuario_form.c_mail.value;
+				var funcao = usuario_form.c_funcao.value;
+				var registro = usuario_form.c_registro.value;
+
+				fire.set({
+				id : bd_id,
+				nome : bd_nome,
+				rg : bd_rg,
+				cpf : bd_cpf,
+				endereco : bd_endereco,
+				telefone : bd_telefone,
+				email : bd_email,
+				funcao : bd_funcao,
+				registro : bd_registro
+				});
+
+				var newPostKey = firebase.database().ref().child('posts').push().key;
+
+				firebase.initializeApp(config);
+				var updates = {};
+				  updates['/posts/' + newPostKey] = postData;
+				  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+				  return firebase.database().ref().update(updates);
+			}
+
+
+
+
+						  	//var config = {
+   			 	//apiKey: " AIzaSyB2lsmGTnJDfOlyhpE6_yQvf95DsZtgQ_k ",
+				//authDomain: "controle-frequencia.firebaseapp.com",
+    			//databaseURL: "https://controle-frequencia.firebaseio.com",
+			    //storageBucket: "controle-frequencia.appspot.com"
+			 	//};
+			  	//firebase.initializeApp(config);
+
+
+				//var database = firebase.database();
+
+
+
+
+
+									//alert(c_rfid + c_nome + c_rg + c_cpf + c_endereco + c_telefone + c_mail + c_funcao + c_registro);
+					//var id = usuario_form.c_id.value;
+					//var nome = usuario_form.c_nome.value;
+					//var rg = usuario_form.c_rg.value;
+					//var cpf = usuario_form.c_cpf.value;
+					//var endereco = usuario_form.c_endereco.value;
+					//var telefone = usuario_form.c_telefone.value;
+					//var email = usuario_form.c_mail.value;
+					//var funcao = usuario_form.c_funcao.value;
+					//var registro = usuario_form.c_registro.value;
+					
+					  //firebase.database().ref('users/').set({
+					    //id : c_rfid,
+						//nome : c_nome,
+						//rg : c_rg,
+						//cpf : cbd_cpf,
+						//endereco : c_endereco,
+						//telefone : cbd_telefone,
+						//email : c_mail,
+						//funcao : c_funcao,
+						//registro : c_registro
+					  //});
+
+
+//esse está funcionando -----------------------------------*****************************
+
+					  function enviarDados() {
+					alert("enviado!");
+					  firebase.database().ref('users/'+ userID).set({
+					    rfid : c_rfid.value,
+						nome : c_nome.value,
+						rg : c_rg.value,
+						cpf : cbd_cpf.value,
+						endereco : c_endereco.value,
+						telefone : cbd_telefone.value,
+						email : c_mail.value,
+						funcao : c_funcao.value,
+						registro : c_registro.value
+					  });
+					  alert("enviado!2");
+				}
+
+
+<script>
+		  // Initialize Firebase
+		  // TODO: Replace with your project's customized code snippet
+		  // var config = {
+		   // apiKey: "<API_KEY>",
+		    // authDomain: "controle-frequencia.firebaseapp.com",
+		    // databaseURL: "https://controle-frequencia.firebaseio.com",
+		    // storageBucket: "gs://controle-frequencia.appspot.com",
+		  //};
+		  // firebase.initializeApp(config);
+		  // var database = firebase.database();
+		</script>
+
+
+
+-- turma
+
+		<script type="text/javascript">
+			  	var config = {
+   			 	apiKey: "AIzaSyB2lsmGTnJDfOlyhpE6_yQvf95DsZtgQ_k",
+				authDomain: "controle-frequencia.firebaseapp.com",
+    			databaseURL: "https://controle-frequencia.firebaseio.com",
+			    storageBucket: "controle-frequencia.appspot.com"
+			 	};
+			  	firebase.initializeApp(config);
+
+
+				var database = firebase.database();
+
+				function writeUserData() {
+				  firebase.database().ref('users/' + userId).set({
+				   		rfid : c_rfid.value,
+						nome : c_nome.value,
+						rg : c_rg.value,
+						cpf : cbd_cpf.value,
+						endereco : c_endereco.value,
+						telefone : cbd_telefone.value,
+						email : c_mail.value,
+						funcao : c_funcao.value,
+						registro : c_registro.value
+				  });
+				}
+
+				firebaseRef.on("value", function(snapshot) {
+			    mostrarJson(snapshot.val());
+					});
+
+					function mostrarJson(json) {
+					    document.getElementById("jsonOut").innerHTML = JSON.stringify(json);
+					}
+
+				
+		</script>
+
+-- usuario
+<script>
+		  // Initialize Firebase
+		  // TODO: Replace with your project's customized code snippet
+		  // var config = {
+		   // apiKey: "<API_KEY>",
+		    // authDomain: "controle-frequencia.firebaseapp.com",
+		    // databaseURL: "https://controle-frequencia.firebaseio.com",
+		    // storageBucket: "gs://controle-frequencia.appspot.com",
+		  //};
+		  // firebase.initializeApp(config);
+		  // var database = firebase.database();
+		</script>
+
+
+		<script type="text/javascript">
+			  	var config = {
+   			 	apiKey: "AIzaSyB2lsmGTnJDfOlyhpE6_yQvf95DsZtgQ_k",
+				authDomain: "controle-frequencia.firebaseapp.com",
+    			databaseURL: "https://controle-frequencia.firebaseio.com",
+			    storageBucket: "controle-frequencia.appspot.com"
+			 	};
+			  	firebase.initializeApp(config);
+
+
+				var database = firebase.database();
+
+				function writeUserData() {
+				  firebase.database().ref('users/' + userId).set({
+				   		rfid : c_rfid.value,
+						nome : c_nome.value,
+						rg : c_rg.value,
+						cpf : cbd_cpf.value,
+						endereco : c_endereco.value,
+						telefone : cbd_telefone.value,
+						email : c_mail.value,
+						funcao : c_funcao.value,
+						registro : c_registro.value
+				  });
+				}
+
+				firebaseRef.on("value", function(snapshot) {
+			    mostrarJson(snapshot.val());
+					});
+
+					function mostrarJson(json) {
+					    document.getElementById("jsonOut").innerHTML = JSON.stringify(json);
+					}
+
+				
+		</script>
+
+-- aluno
